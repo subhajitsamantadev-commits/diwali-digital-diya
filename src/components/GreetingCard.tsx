@@ -93,7 +93,7 @@ const GreetingCard = forwardRef<HTMLDivElement, GreetingCardProps>(function Gree
         <p className="font-body text-base" style={{ color: theme.accent }}>
           — {senderName || 'With love'}
         </p>
-        <p className="font-body text-xs opacity-60">Made with love by Subhajit Samanta · Powered by Firebase and Gemini</p>
+        <p className="font-body text-xs opacity-60">Made with love by Subhajit Samanta</p>
       </div>
     </div>
   );

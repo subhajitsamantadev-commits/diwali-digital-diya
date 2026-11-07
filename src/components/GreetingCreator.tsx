@@ -54,8 +54,6 @@ export default function GreetingCreator({ onShareCreated }: CreatorProps) {
     setAiLoading(true);
     audio.whoosh();
     try {
-      // Gemini via Firebase AI Logic — Phase 2 feature.
-      // For Phase 1 we fall back to a richer preset so the feature is usable.
       await new Promise((r) => setTimeout(r, 900));
       const s = senderName.trim() || 'a loved one';
       const r = receiverName.trim() || 'you';
@@ -258,10 +256,10 @@ export default function GreetingCreator({ onShareCreated }: CreatorProps) {
                   onClick={writeWithAI}
                   disabled={aiLoading}
                   className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-indigo-500/30 px-3 py-1.5 text-xs font-semibold text-indigo-100 ring-1 ring-indigo-300/40 transition hover:bg-indigo-500/50 disabled:opacity-60"
-                  aria-label="Write a wish with AI"
+                  aria-label="Surprise wish"
                 >
                   {aiLoading ? <Loader2 size={12} className="animate-spin" /> : <Wand2 size={12} />}
-                  Write with AI
+                  Surprise wish
                 </button>
               </div>
               <p className="mt-1 text-right text-xs text-gold-300/50">{message.length}/400</p>

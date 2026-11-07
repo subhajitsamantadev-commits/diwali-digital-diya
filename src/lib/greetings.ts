@@ -26,7 +26,10 @@ function rowToGreeting(r: GreetingRow): Greeting {
   };
 }
 
+const UNAVAILABLE_MSG = 'Sharing is temporarily unavailable — the database is not configured.';
+
 export async function saveGreeting(input: GreetingInput): Promise<string> {
+  if (!supabase) throw new Error(UNAVAILABLE_MSG);
   // retry on rare short_id collision
   for (let attempt = 0; attempt < 3; attempt++) {
     const shortId = generateShortId();
@@ -46,6 +49,7 @@ export async function saveGreeting(input: GreetingInput): Promise<string> {
 }
 
 export async function getGreeting(shortId: string): Promise<Greeting | null> {
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from('greetings')
     .select('short_id,sender_name,receiver_name,language,tone,theme,message,created_at')
